@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Builds the docker container to be the last tagged version
+
+# Get directory
+# https://stackoverflow.com/questions/59895/how-to-get-the-source-directory-of-a-bash-script-from-within-the-script-itself#answer-246128
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Go into project root
+cd $DIR && cd ..
+
+# Create container version
+DOCKER_IMAGE=`bin/lib/project | sed '1q;d'`
+
+# Run tag
+docker run --rm --env APP_KEY="base64:/eQ5RUIg9gn16muUFs7mOeY86BCPG9PY808WaCBGJGk=" --env APP_DEBUG=true --publish 3001:80 ${DOCKER_IMAGE}

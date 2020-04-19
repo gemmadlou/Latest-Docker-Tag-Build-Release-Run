@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get latest tag
+# https://gist.github.com/rponte/fdc0724dd984088606b0
+LATEST_TAG=`git tag | sort -V | tail -1`
+
+# Get version without `v` at the beginning
+PLAIN_VERSION=`$LATEST_TAG | cut -d "v" -f 2`
+
+if [ -z "$PLAIN_VERSION" ]; then
+    echo "latest"
+else
+    echo $PLAIN_VERSION
+fi

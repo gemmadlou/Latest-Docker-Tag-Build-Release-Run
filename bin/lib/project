@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Get directory
+# https://stackoverflow.com/questions/59895/how-to-get-the-source-directory-of-a-bash-script-from-within-the-script-itself#answer-246128
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Go into project root
+cd $DIR && cd ../..
+
+# Get version without `v` at the beginning
+PLAIN_VERSION=`bin/lib/tag`
+
+# Set your docker account name
+DOCKER_ACCOUNT=`jq '.container.dockerAccount' package.json | xargs`
+
+# Set your image tag prefix or leave it empty
+IMAGE_TAG_PREFIX=`jq '.container.imageTagPrefix' package.json | xargs`
+
+# Set your image name
+IMAGE_NAME=`jq '.container.imageName' package.json | xargs`
+
+# Create container version
+CONTAINER_TAG=${IMAGE_NAME}:${IMAGE_TAG_PREFIX}${PLAIN_VERSION}
+
+# Image tag
+DOCKER_IMAGE=${DOCKER_ACCOUNT}/${CONTAINER_TAG}
+
+echo $DOCKER_IMAGE
+echo $CONTAINER_TAG
+echo $DOCKER_ACCOUNT
