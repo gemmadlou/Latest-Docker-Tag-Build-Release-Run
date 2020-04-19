@@ -1,6 +1,6 @@
 # Latest Docker Tag: 🏨 Build, 📔 Release, 🚀 Run
 
-## Usage
+## Usage
 
 - Copy the project
 - Setup the `container` property in the `package.json`. Use the example one for more information.
