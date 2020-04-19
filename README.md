@@ -6,7 +6,7 @@
 - Setup the `container` property in the `package.json`. Use the example one for more information.
 - Create your Dockerfile
 - Add the bin scripts to your project
-- Update the `bin/run` to suit your project. This was made with Laravel in mid.
+- Update the `bin/run` to suit your project. This was made with Laravel in mind.
 
 ```bash
 # Build your image
