@@ -1,4 +1,4 @@
-# Latest Docker Tag: Build, Release, Run
+# Latest Docker Tag: 🏨 Build, 📔 Release, 🚀 Run
 
 ## Usage
 
